@@ -29,6 +29,9 @@ const onSignOutSuccess = () => {
   $('.hideOnStart').hide('slow')
   $('#gameTitle').text('Tic-Tac-Toe')
   $('#authHeader').text('New here?')
+  for (let i = 0; i < 9; i++) {
+    $(`#${i}`).css('background-image', '')
+  }
 }
 
 const onSignOutFailure = () => {
