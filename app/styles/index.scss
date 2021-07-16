@@ -30,25 +30,20 @@ input {
 }
 
 #board{
-  background-color: $dark;
+  background-color: transparent;
   padding: 0;
 }
 
 .space {
-  background-color: whitesmoke;
-  background-image: url(../../images/x.png);
-  background-size: 80%;
+  background-color: transparent;
+  background-size: 70%;
   background-repeat: no-repeat;
   background-position: center center;
   content: "";
   display: block;
   border: 5px solid black;
-  border-radius: .5rem;
-  padding-top: percentage(1/3);
 
-    &:hover {
-      background-color: rgb(168, 168, 168);
-    }
+  padding-top: percentage(1/3);
 }
 
 h1 {
@@ -99,3 +94,45 @@ h1 {
     width: 100%;
   }
 }
+
+
+.z {
+  z-index: -1;
+}
+
+@keyframes placeMarker {
+  from {
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    opacity: 1;
+    z-index: -2;
+  }
+}
+
+@keyframes invalidPlacement {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $danger;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+.marked {
+  opacity: 1;
+}
+
+.animateMarked {
+  animation: placeMarker .5s;
+  animation-iteration-count: 1;
+}
+
+.invalid {
+  animation: invalidPlacement .5s;
+}
+
