@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic-Tac-Toe</title>
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +12,90 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <nav id="topNav" class="hideOnStart showOnSignIn navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Tic-Tac-Toe</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse me-auto navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Play <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Past Games</a>
+            </li>
+            <li id="settings" class="nav-item ml-auto">
+              <a class="nav-link" href="#">Settings</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <h1 id="gameTitle" class="showOnStart">Tic-Tac-Toe</h1>
+      <h3 id="message"></h3>
+      <form id="signUp" class="hideOnStart hideOnSignIn auth border">
+        <h2>Sign Up</h2>
+        <label for="signUpEmail" class="col-12">Email:</label>
+        <input id="signUpEmail" name="credentials[email]" type="email" class="input col-12">
+        <label for="signUpPass" class="col-12">Password:</label>
+        <input id="signUpPass" name="credentials[password]" type="password" class="input col-12">
+        <label for="signUpPassConfirm" class="col-12">Confirm Password:</label>
+        <input id="signUpPassConfirm" name="credentials[password_confirmation]" type="password" class="input col-12">
+        <input type="submit" value="Sign Up" class="btn btn-light">
+      </form>
+      <form id="signIn" class="showOnStart hideOnSignIn auth border">
+        <h2>Sign In</h2>
+        <label for="signInEmail" class="col-12">Email:</label>
+        <input id="signInEmail" name="credentials[email]" type="email" class="input col-12">
+        <label for="signInPass" class="col-12">Password:</label>
+        <input id="signInPass" name="credentials[password]" type="password" class="input col-12">
+        <input id = "signInButton" type="submit" value="Sign In" class="btn btn-light">
+      </form>
+      <button id="newGame" class="hideOnStart showOnSignIn gameBtn btn btn-light">New Game</button>
+      <button id="loadGame" class="hideOnStart showOnSignIn gameBtn btn btn-light">Load Game</button>
+      <button id="pastGames" class="hideOnStart showOnSignIn gameBtn btn btn-light">Past Games</button>
+      <div id="board" class="hideOnStart showOnNewGame container">
+        <div class="row">
+          <div id="6" class="space top left col-4"></div>
+          <div id="7" class="space top col-4"></div>
+          <div id="8" class="space top right col-4"></div>
+        </div>
+        <div class="row">
+          <div id="3" class="space left col-4"></div>
+          <div id="4" class="space col-4"></div>
+          <div id="5" class="space right col-4"></div>
+        </div>
+        <div class="row">
+          <div id="0" class="space bottom left col-4"></div>
+          <div id="1" class="space bottom col-4"></div>
+          <div id="2" class="space bottom right col-4"></div>
+        </div>
+      </div>
+      <div id="markerBoard" class="z hideOnStart showOnNewGame container">
+        <div class="row">
+          <div id="06" class="z space top left col-4"></div>
+          <div id="07" class="z space top col-4"></div>
+          <div id="08" class="z space top right col-4"></div>
+        </div>
+        <div class="row">
+          <div id="03" class="z space left col-4"></div>
+          <div id="04" class="z space col-4"></div>
+          <div id="05" class="z space right col-4"></div>
+        </div>
+        <div class="row">
+          <div id="00" class="z space bottom left col-4"></div>
+          <div id="01" class="z space bottom col-4"></div>
+          <div id="02" class="z space bottom right col-4"></div>
+        </div>
+      </div>
+      <form id="authButtons" class="border">
+        <h3 id="authHeader" class="showOnStart hideOnSignIn">New here?</h3>
+        <button id="signUpInstead" class="showOnStart hideOnSignIn instead btn btn-light">Sign Up Instead</button>
+        <button id="signInInstead" class="hideOnStart instead btn btn-light">Sign In Instead</button>
+
+      </form>
+      <footer>
+        <button id="signOut" class="hideOnStart showOnSignIn btn btn-light">Sign Out</button>
+      </footer>
     </body>
 </html>
