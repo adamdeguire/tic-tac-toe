@@ -41,7 +41,7 @@
         <input id="signUpPass" name="credentials[password]" type="password" class="input col-12">
         <label for="signUpPassConfirm" class="col-12">Confirm Password:</label>
         <input id="signUpPassConfirm" name="credentials[password_confirmation]" type="password" class="input col-12">
-        <input type="submit" value="Sign Up" class="btn btn-light">
+        <button type="submit" class="btn btn-light">Sign Up</button>
       </form>
       <form id="signIn" class="showOnStart hideOnSignIn auth border">
         <h2>Sign In</h2>
@@ -49,7 +49,7 @@
         <input id="signInEmail" name="credentials[email]" type="email" class="input col-12">
         <label for="signInPass" class="col-12">Password:</label>
         <input id="signInPass" name="credentials[password]" type="password" class="input col-12">
-        <input id = "signInButton" type="submit" value="Sign In" class="btn btn-light">
+        <button id="signInButton" type="submit" class="btn btn-light">Sign In</button>
       </form>
       <button id="newGame" class="hideOnStart showOnSignIn gameBtn btn btn-light">New Game</button>
       <button id="loadGame" class="hideOnStart showOnSignIn gameBtn btn btn-light">Load Game</button>
@@ -71,6 +71,11 @@
           <div id="2" class="space bottom right col-4"></div>
         </div>
       </div>
+        <div class="hideOnStart showOnNewGame container gameMenu">
+          <div class="col-4 gameNav">1</div>
+          <div class="col-4 gameNav">2</div>
+          <div id="playAgain" class="col-4 gameNav">Restart</div>
+        </div>
       <form id="authButtons" class="showOnStart hideOnSignIn border">
         <h3 id="authHeader" class="showOnStart hideOnSignIn">New here?</h3>
         <button id="signUpInstead" class="showOnStart hideOnSignIn instead btn btn-light">Sign Up</button>

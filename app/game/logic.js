@@ -1,50 +1,51 @@
 const board = new Array(9).fill(' ')
-const markers = ['X', 'O']
-let playerCount = 0
-const turnCount = 0
 
-const clearBoard = () => {
+function clearBoard () {
   board.fill(' ')
 }
 
-const printBoard = () => {
-  for (let i = 0; i < Math.sqrt(board.length); i++) {
-    const start = board.length - ((i + 1) * Math.sqrt(board.length))
-    const end = start + 3
-    console.log(board.slice(start, end))
-  }
+function placeMarker (space, marker) {
+  board[space] = marker
 }
 
-const convertXY = (x, y) => {
-  return x + (y * Math.sqrt(board.length))
+function gameWon (marker) {
+  console.log(board)
+  if (vertWin(marker) || horizWin(marker) || diagWin(marker)) {
+    return true
+  }
+  return false
 }
 
-class Player {
-  constructor (isBot = true, name = undefined, marker = undefined) {
-    // Player Initialization
-    this.incrementCount = () => playerCount++
+function gameTied () {
+  board.every(space => space === ' ')
+}
 
-    this.defaultName = () => {
-      if (!name) name = `Player ${playerCount}`
-      return name
+function vertWin (marker) {
+  for (let i = 0; i < 3; i++) {
+    if (marker === board[i] && marker === board[i + 3] && marker === board[i + 6]) {
+      return true
     }
-
-    this.defaultMarker = () => {
-      if (!marker) marker = markers[playerCount - 1]
-      return marker
-    }
-
-    this.incrementCount()
-    this.name = this.defaultName()
-    this.marker = this.defaultMarker()
-    this.number = playerCount
-    this.winCount = 0
-    this.isBot = isBot
   }
+  return false
+}
+
+function horizWin (marker) {
+  for (let i = 0; i < 3; i++) {
+    if (marker === board[i * 3] && marker === board[(i * 3) + 1] && marker === board[(i * 3) + 2]) {
+      return true
+    }
+  }
+  return false
+}
+
+function diagWin (marker) {
+  if (marker === board[0] && marker === board[4] && marker === board[8]) return true
+  if (marker === board[2] && marker === board[4] && marker === board[6]) return true
 }
 
 module.exports = {
-  Player,
-  markers,
-  board
+  clearBoard,
+  placeMarker,
+  gameWon,
+  gameTied
 }

@@ -13,6 +13,7 @@ $(() => {
   $('#changePass').on('submit', authEvents.onChangePassword)
   $('#signOut').on('click', authEvents.onSignOut)
   $('#newGame').on('click', gameEvents.onNewGame)
+  $('#playAgain').on('click', gameEvents.onNewGame)
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).on('click', gameEvents.onPlaceMarker)
   }
