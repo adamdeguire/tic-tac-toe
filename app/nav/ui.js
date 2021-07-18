@@ -1,7 +1,7 @@
 'use strict'
 
 const onMainMenu = () => {
-  $('#message').text('')
+  $('#message').text('Main Menu')
   $('.hideOnSignIn').hide('slow')
   $('.showOnNewGame').hide('slow')
   $('.showOnAccount').hide('slow')

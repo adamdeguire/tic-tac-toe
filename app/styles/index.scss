@@ -46,8 +46,8 @@ input {
 }
 
 #message {
+  line-height: normal;
   text-align: center;
-  margin-bottom: 1rem;
 }
 
 #board{
@@ -142,14 +142,14 @@ input {
 }
 
 .menuBtns {
+  width: percentage(2/3);
   position: absolute;
-  left: 50%;
+  left: percentage(1/6);
   padding: 0;
 }
 
 .menuBtn {
   position: relative;
-  left: -50%;
   justify-content: center;
   margin: 30% auto;
 }
