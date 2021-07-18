@@ -24,7 +24,7 @@ const onPlaceMarker = (event) => {
   if (!$(`#${space}`).hasClass('marked')) {
     const marker = markers[(turnCount) % 2]
     turnCount++
-    $(`#${space}`).css('background-image', `url(../../images/${marker}.png)`)
+    $(`#${space}`).css('background-image', `url(../images/${marker}.png)`)
     $(`#${space}`).addClass('marked animateMarked')
 
     logic.placeMarker(space, marker)
