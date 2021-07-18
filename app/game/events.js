@@ -11,7 +11,7 @@ const onNewGame = (event) => {
   $('.showOnNewGame').show('slow')
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).css('background-image', '')
-    $(`#${i}`).removeClass('marked')
+    $(`#${i}`).removeClass('marked animateMarked')
   }
   $('#message').html(`Turn ${turnCount + 1}: <b>${markers[turnCount % 2]}</b>`)
 }
@@ -29,7 +29,11 @@ const onPlaceMarker = (event) => {
       $('#playAgain').text('Again?')
       $('#message').html(`${marker} wins!`)
       $('body').addClass('confetti')
-      // setTimeout(() => $('body').removeClass('confetti'), 10000)
+      setTimeout(() => $('body').on('click', () => {
+        $('body').removeClass('confetti')
+        $('body').off()
+      }), 2000)
+
       for (let i = 0; i < 9; i++) {
         $(`#${i}`).addClass('marked')
       }
