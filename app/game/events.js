@@ -11,7 +11,7 @@ const onNewGame = (event) => {
   logic.clearBoard()
   $('#playAgain').text('Restart')
   $('.menuBtn').hide('slow')
-  $('.showOnNewGame').show('slow')
+  setTimeout(() => $('.showOnNewGame').show('slow'), 400)
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).css('background-image', '')
     $(`#${i}`).removeClass('marked animateMarked')

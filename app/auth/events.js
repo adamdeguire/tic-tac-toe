@@ -41,8 +41,9 @@ const onSignOut = (event) => {
 
 const onAreYouSure = (event) => {
   event.preventDefault()
-  $('.areYouSure').toggle()
+  $('#areYouSure').toggle()
   $('#showSignOut').toggle()
+  $('.areYouSure').toggle('slow')
 }
 
 const onChangePassword = (event) => {

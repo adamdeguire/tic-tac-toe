@@ -25,8 +25,8 @@ const onSignInFailure = (response) => {
 
 const onSignOutSuccess = () => {
   $('#message').text('Signed out. Come back soon!')
-  $('.showOnStart').show('slow')
   $('.hideOnStart').hide('slow')
+  setTimeout(() => $('.showOnStart').show('slow'), 400)
   $('#gameTitle').text('Tic-Tac-Toe')
   $('#authHeader').text('New here?')
 }

@@ -47,8 +47,10 @@
         <button id="newGame" class="hideOnStart showOnSignIn menuBtn btn btn-light">New Game</button>
         <button id="pastGames" class="hideOnStart showOnSignIn menuBtn btn btn-light">Past Games</button>
       </div>
-      <button id="changeTheme" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Theme</button>
-      <button id="changePassword" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Password</button>
+      <div class="menuBtns">
+        <button id="changeTheme" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Theme</button>
+        <button id="changePassword" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Password</button>
+      </div>
       <div id="board" class="hideOnStart showOnNewGame container">
         <div class="row">
           <div id="6" class="space top left col-4"></div>
@@ -75,9 +77,9 @@
         <button id="signUpInstead" class="showOnStart hideOnSignIn instead btn btn-light">Sign Up</button>
         <button id="signInInstead" class="hideOnStart instead btn btn-light">Sign In</button>
       </form>
-      <footer class="fixed-bottom">
+      <footer>
         <button id="showSignOut" class="hideOnStart showOnSignIn showSignOut signOut btn btn-light">Sign Out</button>
-        <div id="areYouSure" class="hideOnStart areYouSure signOut">Are you sure?</div>
+        <div id="areYouSure" class="hideOnStart signOut">Are you sure?</div>
         <button id="signOut" class="hideOnStart signOut areYouSure btn btn-light">Yes</button>
         <button class="hideOnStart showSignOut signOut areYouSure btn btn-light">No</button>
       </footer>

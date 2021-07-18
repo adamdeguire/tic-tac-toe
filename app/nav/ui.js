@@ -5,7 +5,7 @@ const onMainMenu = () => {
   $('.hideOnSignIn').hide('slow')
   $('.showOnNewGame').hide('slow')
   $('.showOnAccount').hide('slow')
-  $('.showOnSignIn').show('slow')
+  setTimeout(() => $('.showOnSignIn').show('slow'), 400)
 }
 
 const onAccount = () => {
@@ -17,7 +17,7 @@ const onAccount = () => {
   $('.showOnSignIn').hide('slow')
   $('#topNav').addClass('showOnSignIn')
   $('#showSignOut').addClass('showOnSignIn')
-  $('.showOnAccount').show('slow')
+  setTimeout(() => $('.showOnAccount').show('slow'), 400)
 }
 
 module.exports = {
