@@ -1,16 +1,15 @@
-// use require with a reference to bundle the file and use it in this file
-// const example = require('./example')
 const authEvents = require('./auth/events')
 const gameEvents = require('./game/events')
-// use require without a reference to ensure a file is bundled
-// require('./example')
+const nav = require('./nav/ui')
 
 $(() => {
   $('#signUp').on('submit', authEvents.onSignUp)
   $('#signIn').on('submit', authEvents.onSignIn)
+  $('#navTitle').on('click', nav.showMainMenu)
   $('#signUpInstead').on('click', authEvents.onSignUpInstead)
   $('#signInInstead').on('click', authEvents.onSignInInstead)
   $('#changePass').on('submit', authEvents.onChangePassword)
+  $('.showSignOut').on('click', authEvents.onAreYouSure)
   $('#signOut').on('click', authEvents.onSignOut)
   $('#newGame').on('click', gameEvents.onNewGame)
   $('#playAgain').on('click', gameEvents.onNewGame)

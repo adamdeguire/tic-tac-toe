@@ -1,5 +1,6 @@
 'use strict'
 const store = require('../store')
+const nav = require('../nav/ui')
 
 const onSignUpSuccess = (response) => {
   $('#message').text(`New user ${response.user.email} created. Sign in with your new account to play!`)
@@ -11,10 +12,9 @@ const onSignUpFailure = (response) => {
 }
 
 const onSignInSuccess = (response) => {
+  nav.showMainMenu()
   $('#message').text(`Welcome back, ${response.user.email}!`)
   $('#signIn').trigger('reset')
-  $('.hideOnSignIn').hide('slow')
-  $('.showOnSignIn').show('slow')
   $('#gameTitle').text(' ')
   store.token = response.user.token
 }

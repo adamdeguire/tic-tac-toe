@@ -1,9 +1,12 @@
 'use strict'
+const ui = require('./ui')
+const api = require('./api')
 const logic = require('./logic')
 const markers = ['X', 'O']
 let turnCount = 0
 
 const onNewGame = (event) => {
+  api.newGame()
   turnCount = 0
   logic.clearBoard()
   $('#playAgain').text('Restart')
@@ -26,18 +29,13 @@ const onPlaceMarker = (event) => {
 
     logic.placeMarker(space, marker)
     if (logic.gameWon(marker)) {
-      $('#playAgain').text('Again?')
-      $('#message').html(`${marker} wins!`)
-      $('body').addClass('confetti')
-      setTimeout(() => $('body').on('click', () => {
-        $('body').removeClass('confetti')
-        $('body').off()
-      }), 2000)
-
+      ui.onGameOver(marker)
+      api.updateGame(parseInt(space), marker.toLowerCase(), true)
       for (let i = 0; i < 9; i++) {
         $(`#${i}`).addClass('marked')
       }
     } else {
+      api.updateGame(parseInt(space), marker.toLowerCase(), false)
       $('#message').html(`Turn ${turnCount + 1}: <b>${markers[(turnCount) % 2]}</b>`)
     }
   } else {

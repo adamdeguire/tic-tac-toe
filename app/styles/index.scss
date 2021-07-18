@@ -9,6 +9,7 @@ $black: #000;
 }
 
 body {
+  padding-top: 30px;
   margin: auto;
   background-color: lightblue;
   transition: 1s;
@@ -26,7 +27,7 @@ label {
 input {
   font-size: 20px;
   height: 2rem;
-  background-color: transparent;
+  background-color: whitesmoke;
   border-radius: 2rem;
   justify-content: center;
 }
@@ -79,10 +80,26 @@ h1 {
 
 .top {
   border-top: 0;
+
+  &.left {
+    border-top-left-radius: 15%;
+  }
+
+  &.right {
+    border-top-right-radius: 15%;
+  }
 }
 
 .bottom {
   border-bottom: 0;
+
+  &.left {
+    border-bottom-left-radius: 15%;
+  }
+
+  &.right {
+    border-bottom-right-radius: 15%;
+  }
 }
 
 .left {
@@ -140,6 +157,23 @@ h1 {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+}
+
+footer {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signOut {
+  margin: 0 5px;
+  font-size: 15px;
+  float: right;
+}
+
+#areYouSure {
+  line-height: 35px;
+  vertical-align: middle;
 }
 
 @media only screen and (max-width: 600px) {
@@ -205,5 +239,9 @@ h1 {
 
 .invalid {
   animation: invalidPlacement .5s;
+}
+
+#navTitle:hover {
+  font-weight: bolder;
 }
 

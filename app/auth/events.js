@@ -39,6 +39,12 @@ const onSignOut = (event) => {
   api.signOut()
 }
 
+const onAreYouSure = (event) => {
+  event.preventDefault()
+  $('.areYouSure').toggle()
+  $('#showSignOut').toggle()
+}
+
 const onChangePassword = (event) => {
   event.preventDefault()
   const data = getData(event)
@@ -56,6 +62,7 @@ module.exports = {
   onSignIn,
   onSignUpInstead,
   onSignInInstead,
+  onAreYouSure,
   onSignOut,
   onChangePassword
 }

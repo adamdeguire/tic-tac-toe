@@ -9,7 +9,6 @@ function placeMarker (space, marker) {
 }
 
 function gameWon (marker) {
-  console.log(board)
   if (vertWin(marker) || horizWin(marker) || diagWin(marker)) {
     return true
   }
