@@ -12,7 +12,7 @@ const onSignUpFailure = (response) => {
 }
 
 const onSignInSuccess = (response) => {
-  nav.showMainMenu()
+  nav.onMainMenu()
   $('#message').text(`Welcome back, ${response.user.email}!`)
   $('#signIn').trigger('reset')
   $('#gameTitle').text(' ')

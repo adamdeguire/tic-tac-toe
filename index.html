@@ -14,19 +14,10 @@
     <body>
       <nav id="topNav" class="hideOnStart showOnSignIn navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
         <a id="navTitle" class="navbar-brand" href="#"><b>#</b> Tic-Tac-Toe</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse me-auto navbar-collapse" id="navbarNav">
+        <div id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Menu</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Past Games</a>
-            </li>
-            <li id="settings" class="nav-item ml-auto">
-              <a class="nav-link" href="#">Settings</a>
+            <li id="account" class="nav-item me-auto">
+              <a class="nav-link" href="#">Account</a>
             </li>
           </ul>
         </div>
@@ -51,9 +42,13 @@
         <input id="signInPass" name="credentials[password]" type="password" class="input col-12">
         <button id="signInButton" type="submit" class="btn btn-light">Sign In</button>
       </form>
-      <button id="loadGame" class="hideOnStart showOnSignIn gameBtn btn btn-light">Resume Game</button>
-      <button id="newGame" class="hideOnStart showOnSignIn gameBtn btn btn-light">New Game</button>
-      <button id="pastGames" class="hideOnStart showOnSignIn gameBtn btn btn-light">Past Games</button>
+      <div class="menuBtns">
+        <button id="loadGame" class="hideOnStart showOnSignIn menuBtn btn btn-light">Resume Game</button>
+        <button id="newGame" class="hideOnStart showOnSignIn menuBtn btn btn-light">New Game</button>
+        <button id="pastGames" class="hideOnStart showOnSignIn menuBtn btn btn-light">Past Games</button>
+      </div>
+      <button id="changeTheme" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Theme</button>
+      <button id="changePassword" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Password</button>
       <div id="board" class="hideOnStart showOnNewGame container">
         <div class="row">
           <div id="6" class="space top left col-4"></div>

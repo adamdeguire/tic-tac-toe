@@ -10,7 +10,7 @@ const onNewGame = (event) => {
   turnCount = 0
   logic.clearBoard()
   $('#playAgain').text('Restart')
-  $('.gameBtn').hide('slow')
+  $('.menuBtn').hide('slow')
   $('.showOnNewGame').show('slow')
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).css('background-image', '')
