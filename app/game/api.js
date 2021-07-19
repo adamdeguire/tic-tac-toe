@@ -34,7 +34,20 @@ const updateGame = (index, marker, over) => {
   })
 }
 
+const getGames = () => {
+  return $.ajax({
+    url: `${config.apiUrl}/games`,
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${store.token}`
+    }
+  })
+    .then(ui.onGetGameDataSuccess)
+    .catch(ui.onGetGameDataFailure)
+}
+
 module.exports = {
   newGame,
-  updateGame
+  updateGame,
+  getGames
 }

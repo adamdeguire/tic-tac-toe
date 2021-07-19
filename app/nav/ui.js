@@ -7,6 +7,12 @@ const transitionText = (selector, text) => {
 }
 
 const transitionHTML = (selector, html) => {
+  $(selector).animate({ opacity: 0 }, 400, function () {
+    $(this).html(html)
+  }).animate({ opacity: 1 }, 600)
+}
+
+const transitionFast = (selector, html) => {
   $(selector).animate({ opacity: 0 }, 100, function () {
     $(this).html(html)
   }).animate({ opacity: 1 }, 100)
@@ -78,5 +84,6 @@ module.exports = {
   onAreYouSure,
   onShowPassword,
   transitionText,
-  transitionHTML
+  transitionHTML,
+  transitionFast
 }

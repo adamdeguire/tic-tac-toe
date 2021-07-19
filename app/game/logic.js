@@ -1,25 +1,25 @@
-const board = new Array(9).fill(' ')
+const gameBoard = new Array(9).fill(' ')
 
 function clearBoard () {
-  board.fill(' ')
+  gameBoard.fill(' ')
 }
 
 function placeMarker (space, marker) {
-  board[space] = marker
+  gameBoard[space] = marker
 }
 
-function gameWon (marker) {
-  if (vertWin(marker) || horizWin(marker) || diagWin(marker)) {
+function gameWon (marker, board = gameBoard) {
+  if (vertWin(marker, board) || horizWin(marker, board) || diagWin(marker, board)) {
     return true
   }
   return false
 }
 
-function gameTied () {
+function gameTied (board = gameBoard) {
   board.every(space => space === ' ')
 }
 
-function vertWin (marker) {
+function vertWin (marker, board = gameBoard) {
   for (let i = 0; i < 3; i++) {
     if (marker === board[i] && marker === board[i + 3] && marker === board[i + 6]) {
       return true
@@ -28,7 +28,7 @@ function vertWin (marker) {
   return false
 }
 
-function horizWin (marker) {
+function horizWin (marker, board = gameBoard) {
   for (let i = 0; i < 3; i++) {
     if (marker === board[i * 3] && marker === board[(i * 3) + 1] && marker === board[(i * 3) + 2]) {
       return true
@@ -37,7 +37,7 @@ function horizWin (marker) {
   return false
 }
 
-function diagWin (marker) {
+function diagWin (marker, board = gameBoard) {
   if (marker === board[0] && marker === board[4] && marker === board[8]) return true
   if (marker === board[2] && marker === board[4] && marker === board[6]) return true
 }

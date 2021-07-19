@@ -15,6 +15,7 @@ $(() => {
   $('#neat').on('click', nav.onAccount)
   $('#navTitle').on('click', nav.onMainMenu)
   $('#newGame, #playAgain').on('click', gameEvents.onNewGame)
+  $('#gameData').on('click', gameEvents.onGetGameData)
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).on('click', gameEvents.onPlaceMarker)
   }

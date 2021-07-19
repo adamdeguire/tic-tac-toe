@@ -17,7 +17,7 @@ const onNewGame = (event) => {
     $(`#${i}`).css('background-image', '')
     $(`#${i}`).removeClass('marked animateMarked')
   }
-  nav.transitionHTML('#message', `Turn ${turnCount + 1}: ${markers[turnCount % 2].bold()}`)
+  nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[turnCount % 2].bold()}`)
 }
 
 const onPlaceMarker = (event) => {
@@ -39,7 +39,7 @@ const onPlaceMarker = (event) => {
       }
     } else {
       api.updateGame(parseInt(space), marker.toLowerCase(), false)
-      nav.transitionHTML('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].bold()}`)
+      nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].bold()}`)
     }
   } else {
     $(`#${space}`).addClass('invalid')
@@ -47,7 +47,18 @@ const onPlaceMarker = (event) => {
   }
 }
 
+const onGetGameData = () => {
+  $('.menuBtn').hide(400)
+  nav.transitionHTML('#message',
+    '<div class="spinner-border" role="status">' +
+    '<span class="sr-only"></span>' +
+    '</div>'
+  )
+  api.getGames()
+}
+
 module.exports = {
   onNewGame,
-  onPlaceMarker
+  onPlaceMarker,
+  onGetGameData
 }
