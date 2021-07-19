@@ -1,4 +1,5 @@
 'use strict'
+const nav = require('../nav/ui')
 const store = require('../store')
 const logic = require('../game/logic')
 
@@ -7,8 +8,8 @@ const onNewGameSuccess = (response) => {
 }
 
 const onGameOver = (marker) => {
-  $('#playAgain').text('Again?')
-  $('#message').html(logic.gameWon(marker) ? `${marker} wins!` : 'It\'s a tie!')
+  nav.transitionText('#playAgain', 'Again?')
+  nav.transitionHTML('#message', logic.gameWon(marker) ? `<b>${marker}</b> wins!` : 'It\'s a tie!')
   if (logic.gameWon(marker)) {
     $('body').addClass('confetti')
     setTimeout(() => $('body').on('click', () => {

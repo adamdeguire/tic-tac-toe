@@ -1,5 +1,6 @@
 'use strict'
 const ui = require('./ui')
+const nav = require('../nav/ui')
 const api = require('./api')
 const logic = require('./logic')
 const markers = ['X', 'O']
@@ -9,14 +10,14 @@ const onNewGame = (event) => {
   api.newGame()
   turnCount = 0
   logic.clearBoard()
-  $('#playAgain').text('Restart')
-  $('.menuBtn').hide('slow')
-  setTimeout(() => $('.showOnNewGame').show('slow'), 400)
+  nav.transitionText('#playAgain', 'Restart')
+  $('.menuBtn').hide(400)
+  setTimeout(() => $('.showOnNewGame').show(600), 400)
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).css('background-image', '')
     $(`#${i}`).removeClass('marked animateMarked')
   }
-  $('#message').html(`Turn ${turnCount + 1}: <b>${markers[turnCount % 2]}</b>`)
+  nav.transitionHTML('#message', `Turn ${turnCount + 1}: ${markers[turnCount % 2].bold()}`)
 }
 
 const onPlaceMarker = (event) => {
@@ -38,7 +39,7 @@ const onPlaceMarker = (event) => {
       }
     } else {
       api.updateGame(parseInt(space), marker.toLowerCase(), false)
-      $('#message').html(`Turn ${turnCount + 1}: <b>${markers[(turnCount) % 2]}</b>`)
+      nav.transitionHTML('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].bold()}`)
     }
   } else {
     $(`#${space}`).addClass('invalid')

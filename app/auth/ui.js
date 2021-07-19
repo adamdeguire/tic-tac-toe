@@ -3,38 +3,39 @@ const store = require('../store')
 const nav = require('../nav/ui')
 
 const onFailure = () => {
-  $('#message').text('There was an error processing your request.')
+  nav.transitionText('#message', 'There was an error processing your request.')
 }
 
 const onSignUpSuccess = (response) => {
-  $('#message').text(`New user ${response.user.email} created. Sign in with your new account to play!`)
+  nav.transitionText('#message', `New user ${response.user.email} created. Sign in with your new account to play!`)
   $('#signUp').trigger('reset')
 }
 
-const onSignUpFailure = (response) => {
-  $('#message').text('Looks like that email is already in use here. Sign in instead?')
+const onSignUpFailure = () => {
+  nav.transitionText('#message', 'Looks like that email is already in use here. Sign in instead?')
 }
 
 const onSignInSuccess = (response) => {
+  console.log(response)
   nav.onMainMenu()
-  $('#message').text(`Welcome back, ${response.user.email}!`)
+  nav.transitionText('#message', `Welcome back, ${response.user.email}!`)
   $('#signIn').trigger('reset')
-  $('#gameTitle').text(' ')
+  nav.transitionText('#gameTitle', ' ')
   store.token = response.user.token
 }
 
 const onSignInFailure = (response) => {
-  $('#message').text('No account found. Sign up instead?')
+  nav.transitionText('#message', 'No account found. Sign up instead?')
 }
 
 const onSignOutSuccess = () => {
-  $('#message').text('Signed out. Come back soon!')
-  $('.hideOnStart').hide('slow')
-  setTimeout(() => $('.showOnStart').show('slow'), 400)
-  $('#gameTitle').text('Tic-Tac-Toe')
-  $('#authHeader').text('New here?')
+  nav.transitionText('#message', 'Come back soon!')
+  $('.hideOnStart').hide(400)
+  setTimeout(() => $('.showOnStart').show(600), 400)
+  nav.transitionText('#gameTitle', 'Tic-Tac-Toe')
+  nav.transitionText('#authHeader', 'New here?')
   $('body').on('click', () => {
-    $('#message').text(' ')
+    nav.transitionText('#message', ' ')
     $('body').off()
   })
 }
@@ -44,19 +45,19 @@ const onSignOutFailure = () => {
 }
 
 const onChangePasswordSuccess = (response) => {
-  $('#message').text('Password Changed!')
+  nav.transitionText('#message', 'Password Changed!')
   $('#changePassword').trigger('reset')
-  $('#changePassword').hide('slow')
-  setTimeout(() => $('#neat').show('slow'), 400)
+  $('#changePassword').hide(400)
+  setTimeout(() => $('#neat').show(600), 400)
 }
 
 const onChangePasswordFailure = (response) => {
   switch (response.status) {
     case 400:
-      $('#message').text('Something went wrong, please refresh and try again.')
+      nav.transitionText('#message', 'Something went wrong, please refresh and try again.')
       break
     case 422:
-      $('#message').text('Invalid password, please try again.')
+      nav.transitionText('#message', 'Invalid password, please try again.')
       break
   }
 }
