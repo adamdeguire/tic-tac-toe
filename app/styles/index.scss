@@ -13,6 +13,7 @@ $secondary: whitesmoke;
 body {
   height: auto;
   margin: auto;
+  padding-top: 30px;
   background-color: lightblue;
   transition: 1s;
   background-position-x: center;
@@ -81,7 +82,7 @@ input {
 #gameTitle {
   font-size: 300%;
   margin: 1rem;
-  margin-top: 10%;
+  margin-top: 20%;
   text-align: center;
 }
 
@@ -211,17 +212,9 @@ footer {
 }
 
 @media only screen and (max-width: 600px) {
-
-  body {
-    padding-top: 30px;
-  }
   .instead {
     width: 100%;
   }
-  #gameTitle {
-    margin-top: 20%;
-  }
-
   .menuBtn {
     margin: 30% auto;
   }
