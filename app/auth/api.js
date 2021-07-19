@@ -3,6 +3,7 @@ const ui = require('./ui')
 const store = require('../store')
 const config = require('../config')
 
+// Request new user creation
 const signUp = (data) => {
   return $.ajax({
     url: `${config.apiUrl}/sign-up`,
@@ -13,6 +14,7 @@ const signUp = (data) => {
     .catch(ui.onSignUpFailure)
 }
 
+// Request creation of authentication token for existing user
 const signIn = (data) => {
   return $.ajax({
     url: `${config.apiUrl}/sign-in`,
@@ -23,6 +25,7 @@ const signIn = (data) => {
     .catch(ui.onSignInFailure)
 }
 
+// Request deletion of authentication token for existing user
 const signOut = () => {
   return $.ajax({
     url: `${config.apiUrl}/sign-out`,
@@ -35,6 +38,7 @@ const signOut = () => {
     .catch(ui.onSignOutFailure)
 }
 
+// Request update to existing user password
 const changePassword = (data) => {
   return $.ajax({
     url: `${config.apiUrl}/change-password`,

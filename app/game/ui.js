@@ -3,10 +3,12 @@ const nav = require('../nav/ui')
 const store = require('../store')
 const logic = require('../game/logic')
 
+// Store new game ID
 const onNewGameSuccess = (response) => {
   store.gameId = response.game._id
 }
 
+// Display game-over view
 const onGameOver = (marker) => {
   nav.transitionText('#playAgain', 'Again?')
   nav.transitionHTML('#message', logic.gameWon(marker) ? `<b>${marker}</b> wins!` : 'It\'s a tie!')
@@ -19,6 +21,7 @@ const onGameOver = (marker) => {
   }
 }
 
+// Display current user's game statistics
 const onGetGameDataSuccess = (response) => {
   const gamesPlayed = response.games
   const gamesCompleted = response.games.filter(game => game.over)
@@ -67,6 +70,7 @@ const onGetGameDataSuccess = (response) => {
   )
 }
 
+// Display error message and code
 const onGetGameDataFailure = (response) => {
   nav.transitionText(`Something went wrong. Please refresh and try again. Error: ${response.status}`)
 }

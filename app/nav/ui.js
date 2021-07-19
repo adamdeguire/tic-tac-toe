@@ -1,23 +1,30 @@
 'use strict'
 
+// Slowly transition text of html element with fade out/in
+// ex: transitionText('#message', 'hello')
 const transitionText = (selector, text) => {
   $(selector).animate({ opacity: 0 }, 400, function () {
     $(this).text(text)
   }).animate({ opacity: 1 }, 600)
 }
 
+// Slowly transition inner html of html element with fade out/in
+// ex: transitionHTML('#message', '<b>hello</b>')
 const transitionHTML = (selector, html) => {
   $(selector).animate({ opacity: 0 }, 400, function () {
     $(this).html(html)
   }).animate({ opacity: 1 }, 600)
 }
 
+// Quickly transition inner html of html element with fade out/in
+// ex: transitionFast('#message', '<b>hello</b>')
 const transitionFast = (selector, html) => {
   $(selector).animate({ opacity: 0 }, 100, function () {
     $(this).html(html)
   }).animate({ opacity: 1 }, 100)
 }
 
+// Transition from Sign In to Sign Up view
 const onSignUpInstead = (event) => {
   event.preventDefault()
   $('#signUpEmail').val($('#signInEmail').val())
@@ -30,6 +37,7 @@ const onSignUpInstead = (event) => {
   }, 400)
 }
 
+// Transition from Sign Up to Sign In view
 const onSignInInstead = (event) => {
   event.preventDefault()
   $('#signInEmail').val($('#signUpEmail').val())
@@ -42,12 +50,14 @@ const onSignInInstead = (event) => {
   }, 400)
 }
 
+// Transition to Main Menu view
 const onMainMenu = () => {
   transitionText('#message', 'Main Menu')
   $('.hideOnSignIn, .showOnNewGame, .showOnAccount').hide(400)
   setTimeout(() => $('.showOnSignIn').show(600), 400)
 }
 
+// Transition to Account view
 const onAccount = () => {
   transitionText('#message', 'Your Account')
   $('#topNav, #showSignOut').removeClass('showOnSignIn')
@@ -58,12 +68,14 @@ const onAccount = () => {
   setTimeout(() => $('.showOnAccount').show(600), 400)
 }
 
+// Display 'Sign Out' confirmation prompt
 const onAreYouSure = (event) => {
   event.preventDefault()
   $('#areYouSure, #showSignOut').toggle()
   $('.areYouSure').toggle(800)
 }
 
+// Transition to Change Password view
 const onShowPassword = (event) => {
   event.preventDefault()
   $('#changePassword, .showOnAccount').toggle(800)

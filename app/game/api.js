@@ -4,6 +4,7 @@ const ui = require('./ui')
 const store = require('../store')
 const config = require('../config')
 
+// Request creation of new game object for existing user
 const newGame = () => {
   return $.ajax({
     url: `${config.apiUrl}/games`,
@@ -15,6 +16,7 @@ const newGame = () => {
     .then(ui.onNewGameSuccess)
 }
 
+// Request update of existing game object for existing user
 const updateGame = (index, marker, over) => {
   return $.ajax({
     url: `${config.apiUrl}/games/${store.gameId}`,
@@ -34,6 +36,7 @@ const updateGame = (index, marker, over) => {
   })
 }
 
+// Request all game objects for existing user
 const getGames = () => {
   return $.ajax({
     url: `${config.apiUrl}/games`,
