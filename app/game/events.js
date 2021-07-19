@@ -24,11 +24,13 @@ const onPlaceMarker = (event) => {
   if (!$(`#${space}`).hasClass('marked')) {
     const marker = markers[(turnCount) % 2]
     turnCount++
+
     $(`#${space}`).css('background-image', `url(./public/images/${marker}.png)`)
     $(`#${space}`).addClass('marked animateMarked')
 
     logic.placeMarker(space, marker)
-    if (logic.gameWon(marker)) {
+
+    if (logic.gameWon(marker) || turnCount >= 9) {
       ui.onGameOver(marker)
       api.updateGame(parseInt(space), marker.toLowerCase(), true)
       for (let i = 0; i < 9; i++) {
