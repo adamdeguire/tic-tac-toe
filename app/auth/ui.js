@@ -2,6 +2,10 @@
 const store = require('../store')
 const nav = require('../nav/ui')
 
+const onFailure = () => {
+  $('#message').text('There was an error processing your request.')
+}
+
 const onSignUpSuccess = (response) => {
   $('#message').text(`New user ${response.user.email} created. Sign in with your new account to play!`)
   $('#signUp').trigger('reset')
@@ -29,10 +33,32 @@ const onSignOutSuccess = () => {
   setTimeout(() => $('.showOnStart').show('slow'), 400)
   $('#gameTitle').text('Tic-Tac-Toe')
   $('#authHeader').text('New here?')
+  $('body').on('click', () => {
+    $('#message').text(' ')
+    $('body').off()
+  })
 }
 
 const onSignOutFailure = () => {
-  $('#message').text('There was an error processing your request.')
+  onFailure()
+}
+
+const onChangePasswordSuccess = (response) => {
+  $('#message').text('Password Changed!')
+  $('#changePassword').trigger('reset')
+  $('#changePassword').hide('slow')
+  setTimeout(() => $('#neat').show('slow'), 400)
+}
+
+const onChangePasswordFailure = (response) => {
+  switch (response.status) {
+    case 400:
+      $('#message').text('Something went wrong, please refresh and try again.')
+      break
+    case 422:
+      $('#message').text('Invalid password, please try again.')
+      break
+  }
 }
 
 module.exports = {
@@ -41,5 +67,7 @@ module.exports = {
   onSignInSuccess,
   onSignInFailure,
   onSignOutSuccess,
-  onSignOutFailure
+  onSignOutFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure
 }

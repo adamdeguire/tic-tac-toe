@@ -16,8 +16,8 @@
         <a id="navTitle" class="navbar-brand" href="#"><b>#</b> Tic-Tac-Toe</a>
         <div id="navbarNav">
           <ul class="navbar-nav">
-            <li id="account" class="nav-item me-auto">
-              <a class="nav-link" href="#">Account</a>
+            <li class="nav-item me-auto">
+              <div id="account" class="nav-link">Account</div>
             </li>
           </ul>
         </div>
@@ -49,8 +49,16 @@
       </div>
       <div class="menuBtns">
         <button id="changeTheme" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Theme</button>
-        <button id="changePassword" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Password</button>
+        <button id="showPassword" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Password</button>
       </div>
+      <form id="changePassword" class="hideOnStart hideOnSignIn auth border">
+        <label class="col-12">Old Password:</label>
+        <input class="input col-12" name="passwords[old]" type="password">
+        <label class="col-12">New Password:</label>
+        <input class="input col-12" name="passwords[new]" type="password">
+        <button type="submit" class="btn btn-light">Confirm</button>
+      </form>
+        <button id="neat" class="hideOnStart hideOnSignIn menuBtn btn btn-light">Neat!</button>
       <div id="board" class="hideOnStart showOnNewGame container">
         <div class="row">
           <div id="6" class="space top left col-4"></div>
@@ -79,9 +87,9 @@
       </form>
       <footer>
         <button id="showSignOut" class="hideOnStart showOnSignIn showSignOut signOut btn btn-light">Sign Out</button>
-        <div id="areYouSure" class="hideOnStart signOut">Are you sure?</div>
-        <button id="signOut" class="hideOnStart signOut areYouSure btn btn-light">Yes</button>
-        <button class="hideOnStart showSignOut signOut areYouSure btn btn-light">No</button>
+        <div id="areYouSure" class="hideOnStart hideOnSignIn signOut signOutConfirm">Are you sure?</div>
+        <button id="signOut" class="hideOnStart hideOnSignIn signOut signOutConfirm areYouSure btn btn-light">Yes</button>
+        <button class="hideOnStart hideOnSignIn showSignOut signOut signOutConfirm areYouSure btn btn-light">No</button>
       </footer>
     </body>
 </html>

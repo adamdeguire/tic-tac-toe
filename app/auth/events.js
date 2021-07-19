@@ -14,36 +14,9 @@ const onSignIn = (event) => {
   api.signIn(data)
 }
 
-const onSignUpInstead = (event) => {
-  event.preventDefault()
-  $('#signUpEmail').val($('#signInEmail').val())
-  $('#signUpPass').val($('#signInPass').val())
-  $('#signIn').hide()
-  $('#signUp').show()
-  $('#signInInstead').show()
-  $('#signUpInstead').hide()
-}
-
-const onSignInInstead = (event) => {
-  event.preventDefault()
-  $('#signInEmail').val($('#signUpEmail').val())
-  $('#signInPass').val($('#signUpPass').val())
-  $('#signUp').hide()
-  $('#signIn').show()
-  $('#signInInstead').hide()
-  $('#signUpInstead').show()
-}
-
 const onSignOut = (event) => {
   event.preventDefault()
   api.signOut()
-}
-
-const onAreYouSure = (event) => {
-  event.preventDefault()
-  $('#areYouSure').toggle()
-  $('#showSignOut').toggle()
-  $('.areYouSure').toggle('slow')
 }
 
 const onChangePassword = (event) => {
@@ -61,9 +34,6 @@ const getData = (event) => {
 module.exports = {
   onSignUp,
   onSignIn,
-  onSignUpInstead,
-  onSignInInstead,
-  onAreYouSure,
   onSignOut,
   onChangePassword
 }

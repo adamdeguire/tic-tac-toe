@@ -35,8 +35,17 @@ const signOut = () => {
     .catch(ui.onSignOutFailure)
 }
 
-const changePassword = () => {
-
+const changePassword = (data) => {
+  return $.ajax({
+    url: `${config.apiUrl}/change-password`,
+    method: 'PATCH',
+    headers: {
+      Authorization: `Bearer ${store.token}`
+    },
+    data: data
+  })
+    .then(ui.onChangePasswordSuccess)
+    .catch(ui.onChangePasswordFailure)
 }
 
 module.exports = {
