@@ -16,7 +16,6 @@ const onSignUpFailure = () => {
 }
 
 const onSignInSuccess = (response) => {
-  console.log(response)
   nav.onMainMenu()
   nav.transitionText('#message', `Welcome back, ${response.user.email}!`)
   $('#signIn').trigger('reset')

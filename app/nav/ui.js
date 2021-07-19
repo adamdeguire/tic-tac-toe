@@ -20,7 +20,6 @@ const transitionFast = (selector, html) => {
 
 const onSignUpInstead = (event) => {
   event.preventDefault()
-  console.log('up')
   $('#signUpEmail').val($('#signInEmail').val())
   $('#signUpPass').val($('#signInPass').val())
   $('#signUpInstead, #authButtons, #signIn').hide(400)
@@ -33,7 +32,6 @@ const onSignUpInstead = (event) => {
 
 const onSignInInstead = (event) => {
   event.preventDefault()
-  console.log('in')
   $('#signInEmail').val($('#signUpEmail').val())
   $('#signInPass').val($('#signUpPass').val())
   $('#signInInstead, #authButtons, #signUp').hide(400)
