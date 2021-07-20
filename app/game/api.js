@@ -1,6 +1,7 @@
 'use strict'
 
 const ui = require('./ui')
+const nav = require('../nav/ui')
 const store = require('../store')
 const config = require('../config')
 
@@ -14,6 +15,7 @@ const newGame = () => {
     }
   })
     .then(ui.onNewGameSuccess)
+    .catch(nav.onFailure)
 }
 
 // Request update of existing game object for existing user
@@ -34,6 +36,7 @@ const updateGame = (index, marker, over) => {
       }
     }
   })
+    .catch(nav.onFailure)
 }
 
 // Request all game objects for existing user
@@ -46,7 +49,7 @@ const getGames = () => {
     }
   })
     .then(ui.onGetGameDataSuccess)
-    .catch(ui.onGetGameDataFailure)
+    .catch(nav.onFailure)
 }
 
 module.exports = {

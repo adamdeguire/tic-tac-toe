@@ -41,10 +41,6 @@ const onSignOutSuccess = () => {
   })
 }
 
-const onSignOutFailure = () => {
-  nav.transitionText('#message', 'Something went wrong, please refresh and try again.')
-}
-
 // On API Response Status 204, No Content
 // Display confirmation to user and reset form fields
 const onChangePasswordSuccess = (response) => {
@@ -57,7 +53,7 @@ const onChangePasswordSuccess = (response) => {
 const onChangePasswordFailure = (response) => {
   switch (response.status) {
     case 400:
-      nav.transitionText('#message', 'Something went wrong, please refresh and try again.')
+      nav.onFailure()
       break
     case 422:
       nav.transitionText('#message', 'Invalid password, please try again.')
@@ -71,7 +67,6 @@ module.exports = {
   onSignInSuccess,
   onSignInFailure,
   onSignOutSuccess,
-  onSignOutFailure,
   onChangePasswordSuccess,
   onChangePasswordFailure
 }

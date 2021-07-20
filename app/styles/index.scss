@@ -11,7 +11,7 @@ $secondary: whitesmoke;
 }
 
 body {
-  overflow:hidden;
+  overflow: hidden;
   height: auto;
   margin: auto;
   padding-top: 30px;
@@ -21,6 +21,7 @@ body {
   background-repeat: no-repeat;
   justify-content: center;
   max-width: 800px;
+  overscroll-behavior-y: contain;
 }
 
 h2, label, .btn, #playerType {

@@ -71,14 +71,8 @@ const onGetGameDataSuccess = (response) => {
   )
 }
 
-// Display error message and code
-const onGetGameDataFailure = (response) => {
-  nav.transitionText(`Something went wrong. Please refresh and try again. Error: ${response.status}`)
-}
-
 module.exports = {
   onNewGameSuccess,
   onGameOver,
-  onGetGameDataSuccess,
-  onGetGameDataFailure
+  onGetGameDataSuccess
 }

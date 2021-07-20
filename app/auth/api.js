@@ -1,5 +1,6 @@
 'use strict'
 const ui = require('./ui')
+const nav = require('../nav/ui')
 const store = require('../store')
 const config = require('../config')
 
@@ -35,7 +36,7 @@ const signOut = () => {
     }
   })
     .then(ui.onSignOutSuccess)
-    .catch(ui.onSignOutFailure)
+    .catch(nav.onFailure)
 }
 
 // Request update to existing user password

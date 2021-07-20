@@ -99,6 +99,10 @@ const toggleFooter = (event) => {
   }
 }
 
+const onFailure = () => {
+  transitionFast('#message', 'Something went wrong, <button style="margin-top: 15px" class="menuBtn btn btn-light" onClick="window.location.reload();">Refresh Page</button>')
+}
+
 module.exports = {
   onSignUpInstead,
   onSignInInstead,
@@ -109,5 +113,6 @@ module.exports = {
   transitionText,
   transitionHTML,
   transitionFast,
-  toggleFooter
+  toggleFooter,
+  onFailure
 }
