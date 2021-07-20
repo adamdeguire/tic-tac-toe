@@ -86,6 +86,10 @@ const onShowPassword = (event) => {
   }
 }
 
+const toggleFooter = () => {
+  $('footer').hasClass('popup') ? $('footer').removeClass('popup') : $('footer').addClass('popup')
+}
+
 module.exports = {
   onSignUpInstead,
   onSignInInstead,
@@ -95,5 +99,6 @@ module.exports = {
   onShowPassword,
   transitionText,
   transitionHTML,
-  transitionFast
+  transitionFast,
+  toggleFooter
 }

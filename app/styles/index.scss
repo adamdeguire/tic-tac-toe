@@ -11,6 +11,7 @@ $secondary: whitesmoke;
 }
 
 body {
+  overflow:hidden;
   height: auto;
   margin: auto;
   padding-top: 30px;
@@ -188,27 +189,6 @@ input {
   align-items: center;
 }
 
-footer {
-  position: absolute;
-  height: 40px;
-  width: 100vw;
-  bottom: 10px;
-  right: 5px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.signOut {
-  margin: 0 5px;
-  font-size: 15px;
-  float: right;
-}
-
-#areYouSure {
-  line-height: 35px;
-  vertical-align: middle;
-}
-
 .z {
   z-index: -1;
 }
@@ -324,6 +304,30 @@ footer {
   text-align: center;
 }
 
+footer {
+  position: absolute;
+  height: 40px;
+  width: 100vw;
+  bottom: 10px;
+  right: 0px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.signOut {
+  height: 40px;
+  position: sticky;
+  margin: 0 0px;
+  font-size: 15px;
+  float: right;
+}
+
+#areYouSure {
+  position: sticky;
+  line-height: 35px;
+  vertical-align: middle;
+}
+
 @media only screen and (max-width: 600px) {
   .instead {
     width: 100%;
@@ -350,3 +354,17 @@ footer {
     animation: confetti 5s;
   }
 }
+
+@media only screen and (max-height: 650px) {
+    footer {
+      transition: .5s;
+      bottom: 10px;
+  }
+
+  .popup {
+    padding-top: 40px;
+  }
+
+}
+
+

@@ -16,6 +16,7 @@ $(() => {
   $('.showSignOut').on('click', nav.onAreYouSure)
   $('#navTitle').on('click', nav.onMainMenu)
   $('#account').on('click', nav.onAccount)
+  $('footer').on('click', nav.toggleFooter)
   $('#neat').on('click', nav.onAccount)
 
   // Game Event Listeners
