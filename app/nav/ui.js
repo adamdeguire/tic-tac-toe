@@ -86,8 +86,17 @@ const onShowPassword = (event) => {
   }
 }
 
-const toggleFooter = () => {
-  $('footer').hasClass('popup') ? $('footer').removeClass('popup') : $('footer').addClass('popup')
+const toggleFooter = (event) => {
+  if ($(event.target).attr('id')) return
+  if ($('footer').hasClass('hidePopUp')) {
+    $('footer').removeClass('hidePopUp')
+    $('#showSignOut').show()
+    $('#areYouSure').hide()
+    $('#showSignOut').on('click', onAreYouSure)
+  } else {
+    $('#showSignOut').off()
+    $('footer').addClass('hidePopUp')
+  }
 }
 
 module.exports = {
