@@ -11,7 +11,7 @@ const onNewGameSuccess = (response) => {
 // Display game-over view
 const onGameOver = (marker) => {
   nav.transitionText('#playAgain', 'Again?')
-  nav.transitionHTML('#message', logic.gameWon(marker) ? `<b>${marker}</b> wins!` : 'It\'s a tie!')
+  nav.transitionHTML('#message', logic.gameWon(marker) ? `<b>${marker.toUpperCase()}</b> wins!` : 'It\'s a tie!')
   if (logic.gameWon(marker)) {
     $('body').addClass('confetti')
     setTimeout(() => $('body').on('click', () => {
@@ -23,6 +23,7 @@ const onGameOver = (marker) => {
 
 // Display current user's game statistics
 const onGetGameDataSuccess = (response) => {
+  console.log(response)
   const gamesPlayed = response.games
   const gamesCompleted = response.games.filter(game => game.over)
   const xWins = response.games.filter(game => logic.gameWon('x', game.cells))

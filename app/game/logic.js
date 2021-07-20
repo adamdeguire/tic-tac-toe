@@ -52,7 +52,10 @@ function diagWin (marker, board = gameBoard) {
   return false
 }
 
+function getBoard () { return gameBoard.slice() }
+
 module.exports = {
+  getBoard,
   clearBoard,
   placeMarker,
   gameWon

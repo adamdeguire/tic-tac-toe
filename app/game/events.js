@@ -1,15 +1,16 @@
 'use strict'
+const ai = require('./ai')
 const ui = require('./ui')
 const api = require('./api')
 const nav = require('../nav/ui')
 const logic = require('./logic')
 
 // Game variables
-const markers = ['X', 'O']
+const markers = ['x', 'o']
 let turnCount = 0
+let aiBool = false
 
 // When 'New Game' is selected:
-
 const onNewGame = (event) => {
   // Request new game creation
   api.newGame()
@@ -19,7 +20,7 @@ const onNewGame = (event) => {
   $('.menuBtn').hide(400)
   nav.transitionText('#playAgain', 'Restart')
   setTimeout(() => $('.showOnNewGame').show(600), 400)
-  nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[turnCount % 2].bold()}`)
+  nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[turnCount % 2].bold().toUpperCase()}`)
 
   // Clear game logic board array
   logic.clearBoard()
@@ -31,8 +32,30 @@ const onNewGame = (event) => {
   }
 }
 
-// When a space on the game board is selected:
+// When 'Game Data' is selected:
+const onGetGameData = () => {
+  // Show loading icon
+  $('.menuBtn').hide(400)
+  nav.transitionHTML('#message',
+    '<div class="spinner-border" role="status">' +
+    '<span class="sr-only"></span>' +
+    '</div>'
+  )
+  // Request game data from API
+  api.getGames()
+}
 
+// When the player type button is clicked:
+const onToggleAI = () => {
+  aiBool = !aiBool
+  if ($('#playerType').text() === 'Play AI') {
+    nav.transitionText('#playerType', 'Play Human')
+  } else {
+    nav.transitionText('#playerType', 'Play AI')
+  }
+}
+
+// When a space on the game board is selected:
 const onPlaceMarker = (event) => {
   // Initialize variable for selected space
   const space = $(event.target).attr('id')
@@ -69,31 +92,25 @@ const onPlaceMarker = (event) => {
       api.updateGame(parseInt(space), marker.toLowerCase(), false)
 
       // Display next turn
-      nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].bold()}`)
+      nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].bold().toUpperCase()}`)
     }
   } else {
     // If the space is taken, play 'invalid' animation on that space
     $(`#${space}`).addClass('invalid')
     setTimeout(() => $(`#${space}`).removeClass('invalid animateMarked'), 500)
   }
-}
-
-// When 'Game Data' is selected:
-
-const onGetGameData = () => {
-  // Show loading icon
-  $('.menuBtn').hide(400)
-  nav.transitionHTML('#message',
-    '<div class="spinner-border" role="status">' +
-    '<span class="sr-only"></span>' +
-    '</div>'
-  )
-  // Request game data from API
-  api.getGames()
+  if (aiBool && turnCount % 2 === 1 && turnCount < 9 && !logic.gameWon('x') && !logic.gameWon('o')) {
+    for (let i = 0; i < 9; i++) $(`#${i}`).off()
+    setTimeout(() => {
+      for (let i = 0; i < 9; i++) $(`#${i}`).on('click', onPlaceMarker)
+      $(`#${ai.move('o')}`).trigger('click')
+    }, 1000)
+  }
 }
 
 module.exports = {
   onNewGame,
   onPlaceMarker,
-  onGetGameData
+  onGetGameData,
+  onToggleAI
 }

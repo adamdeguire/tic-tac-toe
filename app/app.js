@@ -19,6 +19,7 @@ $(() => {
   $('#neat').on('click', nav.onAccount)
 
   // Game Event Listeners
+  $('#playerType').on('click', gameEvents.onToggleAI)
   $('#gameData').on('click', gameEvents.onGetGameData)
   $('#newGame, #playAgain').on('click', gameEvents.onNewGame)
   for (let i = 0; i < 9; i++) $(`#${i}`).on('click', gameEvents.onPlaceMarker)
