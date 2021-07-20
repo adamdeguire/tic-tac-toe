@@ -103,6 +103,22 @@ const onFailure = () => {
   transitionFast('#message', 'Something went wrong, <button style="margin-top: 15px" class="menuBtn btn btn-light" onClick="window.location.reload();">Refresh Page</button>')
 }
 
+let theme = true
+const changeTheme = () => {
+  console.log('test')
+  theme = !theme
+
+  transitionText('#changeTheme', theme ? 'Dark Mode' : 'Light Mode')
+  $('#gameMenu').css('background-color', theme ? '' : '#292b2c')
+  $('.gameNav').css('background-color', theme ? '' : '#292b2c')
+  $('#topNav').css('background-color', theme ? '' : '#292b2c')
+  $('.border').css('background-color', theme ? '' : '#292b2c')
+  $('.btn').css('background-color', theme ? '' : '#292b2c')
+  $('input').css('background-color', theme ? '' : 'black')
+  $('body').css('background-color', theme ? '' : 'black')
+  $('.space').css('filter', theme ? '' : 'invert(100%)')
+  $('*').css('color', theme ? '' : 'whitesmoke')
+}
 module.exports = {
   onSignUpInstead,
   onSignInInstead,
@@ -114,5 +130,6 @@ module.exports = {
   transitionHTML,
   transitionFast,
   toggleFooter,
-  onFailure
+  onFailure,
+  changeTheme
 }

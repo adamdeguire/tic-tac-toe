@@ -56,12 +56,15 @@ const onToggleAI = () => {
     nav.transitionText('#playerType', 'Play AI')
   }
 }
-
+let lastRan = 0
 const onChangeDiff = () => {
-  const diffs = ['Easy', 'Medium', 'Hard']
-  ai.setDiff(parseInt($('#diff').val()))
-  nav.transitionText('#diffLabel', diffs[$('#diff').val()])
-  setTimeout(nav.transitionText('#diffLabel', 'AI Difficulty'), 1000)
+  if (lastRan + 20 < Date.now()) {
+    const diffs = ['Easy', 'Medium', 'Hard']
+    ai.setDiff(parseInt($('#diff').val()))
+    nav.transitionText('#diffLabel', diffs[$('#diff').val()])
+    setTimeout(nav.transitionText('#diffLabel', 'AI Difficulty'), 1000)
+    lastRan = Date.now()
+  }
 }
 
 // When a space on the game board is selected:

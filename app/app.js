@@ -14,6 +14,7 @@ $(() => {
   $('#signInInstead').on('click', nav.onSignInInstead)
   $('#showPassword').on('click', nav.onShowPassword)
   $('.showSignOut').on('click', nav.onAreYouSure)
+  $('#changeTheme').on('click', nav.changeTheme)
   $('#navTitle').on('click', nav.onMainMenu)
   $('#account').on('click', nav.onAccount)
   $('footer').on('click', nav.toggleFooter)
