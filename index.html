@@ -44,8 +44,11 @@
       </form>
       <div class="menuBtns">
         <button id="newGame" class="hideOnStart showOnSignIn menuBtn btn btn-light">New Game</button>
-        <button id="pastGames" class="hideOnStart showOnSignIn menuBtn btn btn-light">Past Games</button>
         <button id="gameData" class="hideOnStart showOnSignIn menuBtn btn btn-light">Game Data</button>
+        <div id="diffSlider" class="slideContainer hideOnStart showOnSignIn border menuBtn">
+          <label id="diffLabel">AI Difficulty</label>
+          <input type="range" min="0" max="2" value="1" class="slider hideOnStart showOnSignIn" id="diff">
+        </div>
       </div>
       <div class="menuBtns">
         <button id="changeTheme" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Theme</button>

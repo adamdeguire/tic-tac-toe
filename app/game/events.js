@@ -47,12 +47,21 @@ const onGetGameData = () => {
 
 // When the player type button is clicked:
 const onToggleAI = () => {
+  // Toggle player type
   aiBool = !aiBool
+  // Toggle button label
   if ($('#playerType').text() === 'Play AI') {
     nav.transitionText('#playerType', 'Play Human')
   } else {
     nav.transitionText('#playerType', 'Play AI')
   }
+}
+
+const onChangeDiff = () => {
+  const diffs = ['Easy', 'Medium', 'Hard']
+  ai.setDiff(parseInt($('#diff').val()))
+  nav.transitionText('#diffLabel', diffs[$('#diff').val()])
+  setTimeout(nav.transitionText('#diffLabel', 'AI Difficulty'), 1000)
 }
 
 // When a space on the game board is selected:
@@ -99,10 +108,13 @@ const onPlaceMarker = (event) => {
     $(`#${space}`).addClass('invalid')
     setTimeout(() => $(`#${space}`).removeClass('invalid animateMarked'), 500)
   }
+  // If playing against computer and the game is still going
   if (aiBool && turnCount % 2 === 1 && turnCount < 9 && !logic.gameWon('x') && !logic.gameWon('o')) {
+    // Disable the board while the computer makes its move
     for (let i = 0; i < 9; i++) $(`#${i}`).off()
     setTimeout(() => {
       for (let i = 0; i < 9; i++) $(`#${i}`).on('click', onPlaceMarker)
+      // Simulate a mouse click on the space selected by the script
       $(`#${ai.move('o')}`).trigger('click')
     }, 1000)
   }
@@ -112,5 +124,6 @@ module.exports = {
   onNewGame,
   onPlaceMarker,
   onGetGameData,
-  onToggleAI
+  onToggleAI,
+  onChangeDiff
 }

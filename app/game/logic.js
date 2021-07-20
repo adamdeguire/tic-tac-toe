@@ -52,6 +52,7 @@ function diagWin (marker, board = gameBoard) {
   return false
 }
 
+// Get a copy of the current game board
 function getBoard () { return gameBoard.slice() }
 
 module.exports = {

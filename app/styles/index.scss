@@ -19,10 +19,10 @@ body {
   background-position-x: center;
   background-repeat: no-repeat;
   justify-content: center;
-  max-width: 1000px;
+  max-width: 800px;
 }
 
-h2, label {
+h2, label, .btn, #playerType {
   overflow: hidden;
   white-space: nowrap;
 }
@@ -142,8 +142,6 @@ input {
   align-items: center;
   font-size: 20px;
   margin-top: .5rem;
-  overflow: hidden;
-  white-space: nowrap;
 
   &:hover {
     background-color: $primary;
@@ -192,7 +190,7 @@ input {
 
 footer {
   position: absolute;
-  height: 5vh;
+  height: 40px;
   width: 100vw;
   bottom: 10px;
   right: 5px;
@@ -210,16 +208,6 @@ footer {
   line-height: 35px;
   vertical-align: middle;
 }
-
-@media only screen and (max-width: 600px) {
-  .instead {
-    width: 100%;
-  }
-  .menuBtn {
-    margin: 30% auto;
-  }
-}
-
 
 .z {
   z-index: -1;
@@ -253,16 +241,16 @@ footer {
     background-size: 0;
   }
   30% {
-    background-size: 150%;
+    background-size: 50%;
   }
   100% {
-    background-size: 150%;
+    background-size: 50%;
   }
 }
 
 .confetti {
   background-image: url(./public/images/confetti.gif);
-  background-size: 150%;
+  background-size: 50%;
   animation: confetti 5s;
 }
 
@@ -287,3 +275,78 @@ footer {
   font-size: 15px;
 }
 
+.slideContainer {
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  width: 25vw;
+  min-width: 200px;
+  padding: 10px;
+}
+
+.slider {
+  justify-content: center;
+  text-align: center;
+  -webkit-appearance: none;
+  width: 20vw;
+  min-width: 160px;
+  height: 15px;
+  border-radius: 5px;
+  background: $secondary;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: $dark;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: $dark;
+  cursor: pointer;
+}
+
+#diffLabel {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .instead {
+    width: 100%;
+  }
+  .menuBtn {
+    margin: 30% auto;
+  }
+
+  @keyframes confetti {
+    0% {
+      background-size: 0;
+    }
+    30% {
+      background-size: 150%;
+    }
+    100% {
+      background-size: 150%;
+    }
+  }
+
+  .confetti {
+    background-image: url(./public/images/confetti.gif);
+    background-size: 150%;
+    animation: confetti 5s;
+  }
+}

@@ -2,6 +2,11 @@
 const logic = require('./logic')
 
 let board = logic.getBoard()
+let diff = 1
+
+const setDiff = (diffNum) => {
+  diff = diffNum
+}
 
 const checkVert = (marker) => {
   board = logic.getBoard()
@@ -131,11 +136,12 @@ const checkDiag = (marker) => {
 const randomMove = () => {
   const board = logic.getBoard()
   const open = []
-  board.forEach(space => {
-    if (space === ' ') {
-      open.push(board.indexOf(space))
+  for (let i = 0; i < 9; i++) {
+    if (board[i] === ' ') {
+      open.push(i)
     }
-  })
+  }
+
   return open[Math.floor(Math.random() * open.length)]
 }
 
@@ -153,14 +159,42 @@ const move = (marker) => {
     checkHoriz(marker),
     checkDiag(marker)
   )
-
   const choice = options[Math.floor(Math.random() * options.length)]
-  if (Number.isInteger(winThisTurn('x'))) { return winThisTurn('x') }
-  if (Number.isInteger(winThisTurn('o'))) { return winThisTurn('o') }
-  if (options.length > 1) return choice
-  return randomMove(marker)
+  const lowerDiff = []
+  let count = 0
+
+  switch (diff) {
+    case 0:
+      if (Number.isInteger(winThisTurn('o'))) { lowerDiff.push(winThisTurn('o')) }
+      if (Number.isInteger(winThisTurn('x'))) { lowerDiff.push(winThisTurn('x')) }
+      options.forEach(option => lowerDiff.push(option))
+      count = Math.floor(lowerDiff.length / 2)
+      for (let i = 0; i < count; i++) {
+        const rand = randomMove()
+        lowerDiff.push(rand)
+      }
+      console.log('easy ', lowerDiff)
+      return lowerDiff[Math.floor(Math.random() * lowerDiff.length)]
+    case 1:
+      if (Number.isInteger(winThisTurn('o'))) { lowerDiff.push(winThisTurn('o')) }
+      if (Number.isInteger(winThisTurn('x'))) { lowerDiff.push(winThisTurn('x')) }
+      options.forEach(option => lowerDiff.push(option))
+      count = Math.floor(lowerDiff.length / 4)
+      for (let i = 0; i < count; i++) {
+        const rand = randomMove()
+        lowerDiff.push(rand)
+      }
+      console.log('med ', lowerDiff)
+      return lowerDiff[Math.floor(Math.random() * lowerDiff.length)]
+    case 2:
+      if (Number.isInteger(winThisTurn('o'))) { return winThisTurn('o') }
+      if (Number.isInteger(winThisTurn('x'))) { return winThisTurn('x') }
+      if (options.length > 1) return choice
+      return randomMove(marker)
+  }
 }
 
 module.exports = {
+  setDiff,
   move
 }
