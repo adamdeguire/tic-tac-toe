@@ -11,7 +11,7 @@ const onSignUpSuccess = (response) => {
 
 // On API Response Status 400+
 const onSignUpFailure = () => {
-  nav.transitionText('#message', 'Looks like that email is already in use here. Sign in instead?')
+  nav.transitionText('#message', 'Something went wrong here, please try again.')
 }
 
 // On API Response Status 200, OK
@@ -32,6 +32,7 @@ const onSignInFailure = (response) => {
 // On API Response Status 201, Created
 // Transition to login view and display confirmation to user
 const onSignOutSuccess = () => {
+  nav.transitionHTML('#showTable', '')
   nav.transitionText('#message', 'Come back soon!')
   $('.hideOnStart').hide(400)
   setTimeout(() => $('.showOnStart').show(600), 400)
@@ -54,6 +55,7 @@ const onChangePasswordSuccess = (response) => {
 
 // On API Response Status 400+
 const onChangePasswordFailure = (response) => {
+  $('#changePassword').trigger('reset')
   switch (response.status) {
     case 400:
       nav.onFailure()

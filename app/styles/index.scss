@@ -10,11 +10,18 @@ $secondaryDark: rgb(84, 88, 99);
 * {
   padding: 0 .5rem;
   font-family: 'Montserrat', sans-serif;
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+}
+
+h2, .btn, #playerType {
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 body {
   overflow: hidden;
   height: auto;
+  max-height: 100vh;
   margin: auto;
   padding-top: 30px;
   background-color: $primaryLight;
@@ -22,27 +29,45 @@ body {
   background-position-x: center;
   background-repeat: no-repeat;
   justify-content: center;
+  width: 70vw;
   max-width: 800px;
-  overscroll-behavior-y: contain;
 }
 
-h2, label, .btn, #playerType {
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-label {
-  font-size: 20px;
-  font-weight: bold;
+footer {
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  bottom: 10px;
+  right: 0px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 input {
-  font-size: 20px;
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
   height: 2rem;
   background-color: $secondaryLight;
   border-radius: 2rem;
   justify-content: center;
 }
+
+label {
+  font-size: calc(14px + 6 * ((100vw - 320px) / 680));
+  font-weight: bold;
+}
+
+td {
+  padding-top: 1em;
+  text-align: right;
+  white-space: nowrap;
+}
+
+th {
+  padding-top: 1em;
+  text-align: left;
+  white-space: nowrap;
+}
+
 
 .border {
   border: 3px solid $black;
@@ -55,14 +80,25 @@ input {
   }
 }
 
-#message {
-  line-height: normal;
+.btn {
+  background-color: $secondaryLight;
   text-align: center;
+  display: flex;
+  align-items: center;
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+  margin-top: .5rem;
+
+  &:hover {
+    background-color: $primaryLight;
+    color: $secondaryLight;
+    font-weight: bold;
+  }
 }
 
-#board{
-  background-color: transparent;
-  padding: 0;
+.gameDash {
+  font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+  margin: 0 auto;
+  line-height: 3rem;
 }
 
 .space {
@@ -77,31 +113,6 @@ input {
   filter: brightness(0%);
 }
 
-.gameDash {
-  font-size: 15px;
-  margin: 0 auto;
-  line-height: 3rem;
-}
-
-#gameTitle {
-  font-size: 300%;
-  margin: 1rem;
-  margin-top: 20%;
-  text-align: center;
-}
-
-#navbarNav {
-  padding: 0;
-  align-items: flex-end;
-}
-
-#account {
-  text-align: right;
-
-  &:hover {
-    font-weight: bolder;
-  }
-}
 
 .top {
   border-top: 0;
@@ -126,7 +137,6 @@ input {
     border-bottom-right-radius: 15%;
   }
 }
-
 .left {
   border-left: 0;
 }
@@ -136,22 +146,7 @@ input {
 }
 
 .instead {
-  width: 50%;
-}
-
-.btn {
-  background-color: $secondaryLight;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  font-size: 20px;
-  margin-top: .5rem;
-
-  &:hover {
-    background-color: $primaryLight;
-    color: $secondaryLight;
-    font-weight: bold;
-  }
+  width: 100%;
 }
 
 .menuBtns {
@@ -167,6 +162,14 @@ input {
   margin: 10% auto;
 }
 
+.signOut {
+  height: 35px;
+  position: sticky;
+  margin: 0 5px;
+  font-size: calc(10px + 6 * ((100vw - 320px) / 680));
+  float: right;
+}
+
 .gameNav {
   display: inline-block;
   border-radius: 10%;
@@ -180,54 +183,8 @@ input {
     }
 }
 
-#gameMenu {
-  background-color: $secondaryLight;
-  height: 50px;
-  margin: 2rem 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-}
-
 .z {
   z-index: -1;
-}
-
-@keyframes placeMarker {
-  from {
-    opacity: 0;
-    z-index: -1;
-  }
-  to {
-    opacity: 1;
-    z-index: -2;
-  }
-}
-
-@keyframes invalidPlacement {
-  0% {
-    background-color: transparent;
-  }
-  50% {
-    background-color: $danger;
-  }
-  100% {
-    background-color: transparent;
-  }
-}
-
-@keyframes confetti {
-  0% {
-    background-size: 0;
-  }
-  30% {
-    background-size: 50%;
-  }
-  100% {
-    background-size: 50%;
-  }
 }
 
 .confetti {
@@ -247,14 +204,6 @@ input {
 
 .invalid {
   animation: invalidPlacement .5s;
-}
-
-#navTitle:hover {
-  font-weight: bolder;
-}
-
-#authButtons > h3 {
-  font-size: 15px;
 }
 
 .slideContainer {
@@ -303,28 +252,19 @@ input {
   cursor: pointer;
 }
 
+
+#navTitle:hover {
+  font-weight: bolder;
+}
+
+#authButtons > h3 {
+  font-size: calc(15px + 6 * ((100vw - 320px) / 680));
+}
+
 #diffLabel {
   display: block;
   text-align: center;
   width: 100%;
-}
-
-footer {
-  position: absolute;
-  height: 40px;
-  width: 100vw;
-  bottom: 10px;
-  right: 0px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.signOut {
-  height: 35px;
-  position: sticky;
-  margin: 0 5px;
-  font-size: 15px;
-  float: right;
 }
 
 #areYouSure {
@@ -333,10 +273,111 @@ footer {
   vertical-align: middle;
 }
 
-@media only screen and (max-width: 600px) {
-  .instead {
-    width: 100%;
+#message {
+  margin: 0;
+  padding: 0;
+  line-height: normal;
+  text-align: center;
+}
+
+#showTable {
+  margin-top: 30px;
+  position: absolute;
+  left: 0;
+  width: 100vw;
+}
+
+#gameStats {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: calc(16px + 6 * ((100vw - 320px) / 680));
+}
+
+#board{
+  margin-top: calc(16px + 6 * ((100vw - 320px) / 680));
+  background-color: transparent;
+  padding: 0;
+  max-width: 600px;
+}
+
+#gameTitle {
+  width: 100%;
+  white-space: nowrap;
+  font-size: calc(40px + 10 * ((100vw - 320px) / 680));
+  margin-top: 20%;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#navbarNav {
+  padding: 0;
+  align-items: flex-end;
+}
+
+#account {
+  position: absolute;
+  height: 56px;
+  top: 8px;
+  right: 20px;
+  vertical-align: middle;
+  text-align: right;
+
+  &:hover {
+    font-weight: bolder;
   }
+}
+
+#gameMenu {
+  background-color: $secondaryLight;
+  height: 50px;
+  margin: 2rem 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+@keyframes placeMarker {
+  from {
+    opacity: 0;
+    z-index: -1;
+  }
+  to {
+    opacity: 1;
+    z-index: -2;
+  }
+}
+
+@keyframes invalidPlacement {
+  0% {
+    background-color: transparent;
+  }
+  50% {
+    background-color: $danger;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+@keyframes confetti {
+  0% {
+    background-size: 0;
+  }
+  30% {
+    background-size: 50%;
+  }
+  100% {
+    background-size: 50%;
+  }
+}
+@media only screen and (max-width: 600px) {
+
+  body {
+    width: 80vw;
+  }
+
   .menuBtn {
     margin: 30% auto;
   }
@@ -360,7 +401,7 @@ footer {
   }
 }
 
-@media only screen and (max-height: 750px) {
+@media only screen and (max-height: 800px) {
     footer {
       transition: .5s;
       bottom: 10px;
@@ -372,4 +413,9 @@ footer {
 
 }
 
+@media (min-aspect-ratio: 9/10) {
+  body {
+    overflow: scroll;
+  }
+}
 

@@ -27,6 +27,7 @@ const transitionFast = (selector, html) => {
 // Transition from Sign In to Sign Up view
 const onSignUpInstead = (event) => {
   event.preventDefault()
+  transitionText('#message', ' ')
   $('#signUpEmail').val($('#signInEmail').val())
   $('#signUpPass').val($('#signInPass').val())
   $('#signUpInstead, #authButtons, #signIn').hide(400)
@@ -40,6 +41,7 @@ const onSignUpInstead = (event) => {
 // Transition from Sign Up to Sign In view
 const onSignInInstead = (event) => {
   event.preventDefault()
+  transitionText('#message', ' ')
   $('#signInEmail').val($('#signUpEmail').val())
   $('#signInPass').val($('#signUpPass').val())
   $('#signInInstead, #authButtons, #signUp').hide(400)
@@ -53,6 +55,7 @@ const onSignInInstead = (event) => {
 // Transition to Main Menu view
 const onMainMenu = () => {
   transitionText('#message', 'Main Menu')
+  transitionHTML('#showTable', '')
   $('.hideOnSignIn, .showOnNewGame, .showOnAccount').hide(400)
   setTimeout(() => $('.showOnSignIn').show(600), 400)
 }
@@ -60,6 +63,7 @@ const onMainMenu = () => {
 // Transition to Account view
 const onAccount = () => {
   transitionText('#message', 'Your Account')
+  transitionHTML('#showTable', '')
   $('#topNav, #showSignOut').removeClass('showOnSignIn')
   $('.signOutConfirm').removeClass('hideOnSignIn')
   $('.hideOnSignIn, .showOnNewGame, .showOnSignIn').hide(400)
@@ -88,7 +92,7 @@ const onShowPassword = (event) => {
 
 // Pop 'Sign Out' button up and down on mobile screens
 const toggleFooter = (event) => {
-  if ($(event.target).attr('id')) return
+  if ($(event.target).attr('id') || $(window).height() >= 750) return
   if ($('footer').hasClass('hidePopUp')) {
     $('footer').removeClass('hidePopUp')
     $('#showSignOut').show()

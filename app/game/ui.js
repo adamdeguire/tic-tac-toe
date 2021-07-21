@@ -91,16 +91,31 @@ const onGetGameDataSuccess = (response) => {
   }
 
   // Format HTML to display above data
-  nav.transitionHTML('#message',
-    'Games played: <b>' + gamesPlayed.length + '</b><br /><br />' +
-    'Games completed: <b>' + gamesCompleted.length + '</b><br /><br />' +
-    '<b>X</b> wins: <b>' + xWins.length + '</b><br /><br />' +
-    '<b>O</b> wins: <b>' + oWins.length + '</b><br /><br />' +
-    'Ties: <b>' + ties.length + '</b><br /><br />' +
-    'Avg. moves/game: <b>' + movesPerGame + '</b><br /><br />' +
-    'Avg. moves/win: <b>' + movesPerWin + '</b><br /><br />' +
-    'Shortest game: <b>' + gameTime(Math.min(...gameLengths)) + ' </b><br /><br />' +
-    'Longest game: <b>' + gameTime(Math.max(...gameLengths)) + ' </b><br /><br />'
+  // nav.transitionHTML('#message',
+  //   'Games played: <b>' + gamesPlayed.length + '</b><br /><br />' +
+  //   'Games completed: <b>' + gamesCompleted.length + '</b><br /><br />' +
+  //   '<b>X</b> wins: <b>' + xWins.length + '</b><br /><br />' +
+  //   '<b>O</b> wins: <b>' + oWins.length + '</b><br /><br />' +
+  //   'Ties: <b>' + ties.length + '</b><br /><br />' +
+  //   'Avg. moves/game: <b>' + movesPerGame + '</b><br /><br />' +
+  //   'Avg. moves/win: <b>' + movesPerWin + '</b><br /><br />' +
+  //   'Shortest game: <b>' + gameTime(Math.min(...gameLengths)) + ' </b><br /><br />' +
+  //   'Longest game: <b>' + gameTime(Math.max(...gameLengths)) + ' </b><br /><br />'
+  // )
+  $('#showTable').show('slow')
+  nav.transitionHTML('#message', 'Your Stats')
+  nav.transitionHTML('#showTable',
+    '<table id="gameStats">' +
+    '<tr><th>Games Played</th><td>' + gamesPlayed.length + '</td></tr>' +
+    '<tr><th>Games Completed</th><td>' + gamesCompleted.length + '</td></tr>' +
+    '<tr><th>X wins</th><td>' + xWins.length + '</td></tr>' +
+    '<tr><th>O wins</th><td>' + oWins.length + '</td></tr>' +
+    '<tr><th>Ties</th><td>' + ties.length + '</td></tr>' +
+    '<tr><th>Avg. Moves/game</th><td>' + movesPerGame + '</td></tr>' +
+    '<tr><th>Avg. Moves/win</th><td>' + movesPerWin + '</td></tr>' +
+    '<tr><th>Shortest Game</th><td>' + gameTime(Math.min(...gameLengths)) + '</td></tr>' +
+    '<tr><th>Longest Game</th><td>' + gameTime(Math.max(...gameLengths)) + '</td></tr>' +
+    '</table>'
   )
 }
 
