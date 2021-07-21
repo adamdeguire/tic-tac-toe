@@ -97,8 +97,8 @@ const onGetGameDataSuccess = (response) => {
     '<b>X</b> wins: <b>' + xWins.length + '</b><br /><br />' +
     '<b>O</b> wins: <b>' + oWins.length + '</b><br /><br />' +
     'Ties: <b>' + ties.length + '</b><br /><br />' +
-    'Average moves/game: <b>' + movesPerGame + '</b><br /><br />' +
-    'Average moves/win: <b>' + movesPerWin + '</b><br /><br />' +
+    'Avg. moves/game: <b>' + movesPerGame + '</b><br /><br />' +
+    'Avg. moves/win: <b>' + movesPerWin + '</b><br /><br />' +
     'Shortest game: <b>' + gameTime(Math.min(...gameLengths)) + ' </b><br /><br />' +
     'Longest game: <b>' + gameTime(Math.max(...gameLengths)) + ' </b><br /><br />'
   )
