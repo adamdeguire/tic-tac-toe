@@ -9,6 +9,7 @@ const onSignUpSuccess = (response) => {
   $('#signUp').trigger('reset')
 }
 
+// On API Response Status 400+
 const onSignUpFailure = () => {
   nav.transitionText('#message', 'Looks like that email is already in use here. Sign in instead?')
 }
@@ -23,6 +24,7 @@ const onSignInSuccess = (response) => {
   store.token = response.user.token
 }
 
+// On API Response Status 400+
 const onSignInFailure = (response) => {
   nav.transitionText('#message', 'No account found. Sign up instead?')
 }
@@ -50,6 +52,7 @@ const onChangePasswordSuccess = (response) => {
   setTimeout(() => $('#neat').show(600), 400)
 }
 
+// On API Response Status 400+
 const onChangePasswordFailure = (response) => {
   switch (response.status) {
     case 400:

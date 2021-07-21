@@ -29,6 +29,7 @@ const onNewGame = (event) => {
   for (let i = 0; i < 9; i++) {
     $(`#${i}`).css('background-image', '')
     $(`#${i}`).removeClass('marked animateMarked')
+    $(`#${i}`).attr('alt', `empty space ${i}`)
   }
 }
 
@@ -56,13 +57,21 @@ const onToggleAI = () => {
     nav.transitionText('#playerType', 'Play AI')
   }
 }
+
+// When the AI Difficulty slider is moved:
 let lastRan = 0
 const onChangeDiff = () => {
+  // Prevent the function from running more than once simultaneously
   if (lastRan + 20 < Date.now()) {
     const diffs = ['Easy', 'Medium', 'Hard']
+
+    // Send the selected difficulty to the AI script
     ai.setDiff(parseInt($('#diff').val()))
+
+    // Display confirmation to the user
     nav.transitionText('#diffLabel', diffs[$('#diff').val()])
     setTimeout(nav.transitionText('#diffLabel', 'AI Difficulty'), 1000)
+
     lastRan = Date.now()
   }
 }
@@ -81,6 +90,9 @@ const onPlaceMarker = (event) => {
     // Mark the selected space with the correct marker
     $(`#${space}`).css('background-image', `url(./public/images/${marker}.png)`)
     $(`#${space}`).addClass('marked animateMarked')
+
+    // Add alt text to selected space
+    $(`#${space}`).attr('alt', `${marker} on space ${space}`)
 
     // Update the game logic board array
     logic.placeMarker(space, marker)

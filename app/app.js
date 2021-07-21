@@ -16,15 +16,15 @@ $(() => {
   $('.showSignOut').on('click', nav.onAreYouSure)
   $('#changeTheme').on('click', nav.changeTheme)
   $('#navTitle').on('click', nav.onMainMenu)
-  $('#account').on('click', nav.onAccount)
   $('footer').on('click', nav.toggleFooter)
+  $('#account').on('click', nav.onAccount)
   $('#neat').on('click', nav.onAccount)
 
   // Game Event Listeners
-  $('#playerType').on('click', gameEvents.onToggleAI)
   $('#diff').on('change', gameEvents.onChangeDiff)
-  $('#diffSlider').on('click', gameEvents.onChangeDiff)
+  $('#playerType').on('click', gameEvents.onToggleAI)
   $('#gameData').on('click', gameEvents.onGetGameData)
+  $('#diffSlider').on('click', gameEvents.onChangeDiff)
   $('#newGame, #playAgain').on('click', gameEvents.onNewGame)
   for (let i = 0; i < 9; i++) $(`#${i}`).on('click', gameEvents.onPlaceMarker)
 

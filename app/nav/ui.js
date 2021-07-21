@@ -86,6 +86,7 @@ const onShowPassword = (event) => {
   }
 }
 
+// Pop 'Sign Out' button up and down on mobile screens
 const toggleFooter = (event) => {
   if ($(event.target).attr('id')) return
   if ($('footer').hasClass('hidePopUp')) {
@@ -99,15 +100,18 @@ const toggleFooter = (event) => {
   }
 }
 
+// Display error message and refresh button on generic error
 const onFailure = () => {
   transitionFast('#message', 'Something went wrong, <button style="margin-top: 15px" class="menuBtn btn btn-light" onClick="window.location.reload();">Refresh Page</button>')
 }
 
+// Toggle light/dark mode
 let theme = true
 const changeTheme = () => {
   console.log('test')
   theme = !theme
 
+  // Set/unset Dark mode css styling
   transitionText('#changeTheme', theme ? 'Dark Mode' : 'Light Mode')
   $('#gameMenu').css('background-color', theme ? '' : '#292b2c')
   $('.gameNav').css('background-color', theme ? '' : '#292b2c')
@@ -119,6 +123,7 @@ const changeTheme = () => {
   $('.space').css('filter', theme ? '' : 'invert(100%)')
   $('*').css('color', theme ? '' : 'whitesmoke')
 }
+
 module.exports = {
   onSignUpInstead,
   onSignInInstead,
