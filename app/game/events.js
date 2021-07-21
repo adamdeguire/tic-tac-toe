@@ -8,7 +8,7 @@ const logic = require('./logic')
 // Game variables
 const markers = ['x', 'o']
 let turnCount = 0
-let aiBool = false
+let aiBool = true
 
 // When 'New Game' is selected:
 const onNewGame = (event) => {
