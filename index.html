@@ -56,9 +56,9 @@
         <button id="showPassword" class="hideOnStart showOnAccount menuBtn btn btn-light">Change Password</button>
       </div>
       <form id="changePassword" class="hideOnStart hideOnSignIn auth border">
-        <label class="col-12">Old Password:</label>
+        <label class="col-12 changePassLabel">Old Password:</label>
         <input class="input col-12" name="passwords[old]" type="password">
-        <label class="col-12">New Password:</label>
+        <label class="col-12 changePassLabel">New Password:</label>
         <input class="input col-12" name="passwords[new]" type="password">
         <button type="submit" class="btn btn-light">Confirm</button>
       </form>
@@ -89,8 +89,8 @@
         <button id="signUpInstead" class="instead btn btn-light">Sign Up</button>
         <button id="signInInstead" class="hideOnStart instead btn btn-light">Sign In</button>
       </form>
-      <footer class="hideOnStart showOnSignIn showOnNewGame showOnAccount">
-        <button id="showSignOut" class="hideOnStart showOnSignIn showSignOut signOut btn btn-light">Sign Out</button>
+      <footer class="hideOnStart">
+        <button id="showSignOut" class="hideOnStart signOut btn btn-light">Sign Out</button>
         <div id="areYouSure" class="hideOnStart hideOnSignIn signOut signOutConfirm">Are you sure?</div>
         <button id="signOut" class="hideOnStart hideOnSignIn signOut signOutConfirm areYouSure btn btn-light">Yes</button>
         <button id="cancelSignOut" class="hideOnStart hideOnSignIn showSignOut signOut signOutConfirm areYouSure btn btn-light">No</button>

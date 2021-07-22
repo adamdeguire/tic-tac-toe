@@ -20,7 +20,7 @@ const onNewGame = (event) => {
   $('.menuBtn').hide(400)
   nav.transitionText('#playAgain', 'Restart')
   setTimeout(() => $('.showOnNewGame').show(600), 400)
-  nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[turnCount % 2].bold().toUpperCase()}`)
+  nav.transitionFast('#message', `Turn ${turnCount + 1} : ${markers[turnCount % 2].toUpperCase()}`)
 
   // Clear game logic board array
   logic.clearBoard()
@@ -62,7 +62,7 @@ const onToggleAI = () => {
 let lastRan = 0
 const onChangeDiff = () => {
   // Prevent the function from running more than once simultaneously
-  if (lastRan + 20 < Date.now()) {
+  if (lastRan + 250 < Date.now()) {
     const diffs = ['Easy', 'Medium', 'Hard']
 
     // Send the selected difficulty to the AI script
@@ -116,7 +116,7 @@ const onPlaceMarker = (event) => {
       api.updateGame(parseInt(space), marker.toLowerCase(), false)
 
       // Display next turn
-      nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].bold().toUpperCase()}`)
+      nav.transitionFast('#message', `Turn ${turnCount + 1}: ${markers[(turnCount) % 2].toUpperCase()}`)
     }
   } else {
     // If the space is taken, play 'invalid' animation on that space

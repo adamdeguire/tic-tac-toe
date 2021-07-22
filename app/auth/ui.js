@@ -11,7 +11,8 @@ const onSignUpSuccess = (response) => {
 
 // On API Response Status 400+
 const onSignUpFailure = () => {
-  nav.transitionText('#message', 'Something went wrong here, please try again.')
+  nav.transitionText('#message', 'Something went wrong, please try again.')
+  $('#signUp').trigger('reset')
 }
 
 // On API Response Status 200, OK
@@ -27,6 +28,7 @@ const onSignInSuccess = (response) => {
 // On API Response Status 400+
 const onSignInFailure = (response) => {
   nav.transitionText('#message', 'No account found. Sign up instead?')
+  $('#signIn').trigger('reset')
 }
 
 // On API Response Status 201, Created

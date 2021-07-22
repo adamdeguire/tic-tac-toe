@@ -11,7 +11,7 @@ const onNewGameSuccess = (response) => {
 // Display game-over view
 const onGameOver = (marker) => {
   nav.transitionText('#playAgain', 'Again?')
-  nav.transitionHTML('#message', logic.gameWon(marker) ? `<b>${marker.toUpperCase()}</b> wins!` : 'It\'s a tie!')
+  nav.transitionHTML('#message', logic.gameWon(marker) ? `${marker.toUpperCase()} wins!` : 'It\'s a tie!')
   if (logic.gameWon(marker)) {
     $('body').addClass('confetti')
     setTimeout(() => $('body').on('click', () => {
@@ -90,18 +90,7 @@ const onGetGameDataSuccess = (response) => {
     return `${m} ${s}s`
   }
 
-  // Format HTML to display above data
-  // nav.transitionHTML('#message',
-  //   'Games played: <b>' + gamesPlayed.length + '</b><br /><br />' +
-  //   'Games completed: <b>' + gamesCompleted.length + '</b><br /><br />' +
-  //   '<b>X</b> wins: <b>' + xWins.length + '</b><br /><br />' +
-  //   '<b>O</b> wins: <b>' + oWins.length + '</b><br /><br />' +
-  //   'Ties: <b>' + ties.length + '</b><br /><br />' +
-  //   'Avg. moves/game: <b>' + movesPerGame + '</b><br /><br />' +
-  //   'Avg. moves/win: <b>' + movesPerWin + '</b><br /><br />' +
-  //   'Shortest game: <b>' + gameTime(Math.min(...gameLengths)) + ' </b><br /><br />' +
-  //   'Longest game: <b>' + gameTime(Math.max(...gameLengths)) + ' </b><br /><br />'
-  // )
+  // Format HTML table to display above data
   $('#showTable').show('slow')
   nav.transitionHTML('#message', 'Your Stats')
   nav.transitionHTML('#showTable',

@@ -57,6 +57,7 @@ const onMainMenu = () => {
   transitionText('#message', 'Main Menu')
   transitionHTML('#showTable', '')
   $('.hideOnSignIn, .showOnNewGame, .showOnAccount').hide(400)
+  $('footer, #showSignOut').show()
   setTimeout(() => $('.showOnSignIn').show(600), 400)
 }
 
@@ -64,19 +65,29 @@ const onMainMenu = () => {
 const onAccount = () => {
   transitionText('#message', 'Your Account')
   transitionHTML('#showTable', '')
-  $('#topNav, #showSignOut').removeClass('showOnSignIn')
+  $('#topNav').removeClass('showOnSignIn')
   $('.signOutConfirm').removeClass('hideOnSignIn')
   $('.hideOnSignIn, .showOnNewGame, .showOnSignIn').hide(400)
-  $('#topNav, #showSignOut').addClass('showOnSignIn')
+  $('#topNav').addClass('showOnSignIn')
   $('.signOutConfirm').addClass('hideOnSignIn')
   setTimeout(() => $('.showOnAccount').show(600), 400)
 }
 
-// Display 'Sign Out' confirmation prompt
-const onAreYouSure = (event) => {
-  event.preventDefault()
-  $('#areYouSure, #showSignOut').toggle()
-  $('.areYouSure').toggle(800)
+// Toggle 'Sign Out' confirmation prompt
+const onAreYouSure = () => {
+  if ($('#areYouSure').css('display') === 'none') {
+    $('footer')
+    $('#showSignOut').hide(400)
+    setTimeout(() => {
+      $('#areYouSure').show(200)
+      $('.areYouSure').show(400)
+    }, 400)
+  }
+  if ($('#showSignOut').css('display') === 'none') {
+    $('#areYouSure').hide(200)
+    $('.areYouSure').hide(400)
+    setTimeout(() => $('#showSignOut').show(400), 400)
+  }
 }
 
 // Transition to Change Password view
@@ -93,10 +104,9 @@ const onShowPassword = (event) => {
 // Pop 'Sign Out' button up and down on mobile screens
 const toggleFooter = (event) => {
   if ($(event.target).attr('id') || $(window).height() >= 750) return
+  if ($('#showSignOut').css('display') === 'none') onAreYouSure()
   if ($('footer').hasClass('hidePopUp')) {
     $('footer').removeClass('hidePopUp')
-    $('#showSignOut').show()
-    $('#areYouSure').hide()
     $('#showSignOut').on('click', onAreYouSure)
   } else {
     $('#showSignOut').off()
@@ -118,7 +128,7 @@ const changeTheme = () => {
   // Set/unset Dark mode css styling
   transitionText('#changeTheme', theme ? 'Dark Mode' : 'Light Mode')
   $('#gameMenu').css('background-color', theme ? '' : '#292b2c')
-  $('.gameNav').css('background-color', theme ? '' : '#292b2c')
+  // $('.gameNav').css('background-color', theme ? '' : '#292b2c')
   $('#topNav').css('background-color', theme ? '' : '#292b2c')
   $('.border').css('background-color', theme ? '' : '#292b2c')
   $('.btn').css('background-color', theme ? '' : '#292b2c')
