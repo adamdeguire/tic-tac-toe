@@ -354,13 +354,16 @@ th {
 
 @keyframes invalidPlacement {
   0% {
+    filter: unset;
     background-color: transparent;
   }
   50% {
     background-color: $danger;
+    filter: unset;
   }
   100% {
     background-color: transparent;
+    filter: unset;
   }
 }
 
