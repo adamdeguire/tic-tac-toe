@@ -122,7 +122,6 @@ const onFailure = () => {
 // Toggle light/dark mode
 let theme = true
 const changeTheme = () => {
-  console.log('test')
   theme = !theme
 
   // Set/unset Dark mode css styling
