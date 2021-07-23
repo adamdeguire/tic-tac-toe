@@ -234,10 +234,10 @@ CSS examples below.
 
 The below images were the initial layout plan for the application. The final product shows some drastic changes from these designs, most of which were made in favor of a more **mobile-first** approach.
 
-### Login
+### Login View
 ![Login Wireframe](https://i.imgur.com/uzY4kCJ.png)
 
-### Game
+### Game View
 ![Game Wireframe](https://i.imgur.com/4BZxNkw.png)
 
 <p>&nbsp;</p>
