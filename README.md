@@ -21,7 +21,9 @@ In my first-ever software engineering project, I've created an **HTML**/**CSS**/
 - Mobile-first application design with **Bootstrap** and **SASS**
 - DOM traversal and manipulation via **jQuery**
 - Single Page Application (**SPA**) design
+  
 <p>&nbsp;</p>
+
 ---
 
 ## **Application Overview**
